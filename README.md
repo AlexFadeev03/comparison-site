@@ -1,7 +1,6 @@
 # Comparison Site
 
-A minimalist, modern web app for comparing products with categories, subcategories, ratings, and a responsive dashboard. 
-
+A minimalist, modern web app for comparing products with categories, subcategories, ratings, and a responsive dashboard.
 ---
 
 ## 📦 Features
@@ -47,7 +46,13 @@ A minimalist, modern web app for comparing products with categories, subcategori
    php artisan serve
    npm run dev
    ```
-
+8. **Access the app at:**
+   ```sh
+   http://localhost:8000
+   ```
+9. **Login with the provided credentials:**
+   - Email: `admin@example.com`
+   - Password: `password`
 ---
 
 ## 🛠️ Tech Stack
