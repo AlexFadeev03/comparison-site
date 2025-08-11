@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Category;
+use App\Models\Subcategory;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ProductFilterRequest extends FormRequest
 {
@@ -14,19 +17,43 @@ class ProductFilterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'min_price' => 'nullable|numeric|min:0',
-            'max_price' => 'nullable|numeric|min:0',
+            'category_id' => [
+                'nullable',
+                'int',
+                'min:1',
+                'exists:' . Category::class . ',id'
+            ],
+            'subcategory_id' => [
+                'nullable',
+                'int',
+                'min:1',
+                'exists:' . SubCategory::class . ',id'
+            ],
+            'min_price' => [
+                'nullable',
+                'numeric',
+                'min:0',
+                Rule::when(
+                    fn ($attributes) => $attributes->get('min_price') && $attributes->get('max_price'),
+                    'lte:max_price'
+                ),
+            ],
+            'max_price' => [
+                'nullable',
+                'numeric',
+                Rule::when(
+                    fn ($attributes) => $attributes->get('min_price') && $attributes->get('max_price'),
+                    'gte:min_price'
+                ),
+            ],
         ];
     }
 
-    public function withValidator($validator)
+    public function messages()
     {
-        $validator->after(function ($validator) {
-            $min = $this->input('min_price');
-            $max = $this->input('max_price');
-            if ($min !== null && $max !== null && $min > $max) {
-                $validator->errors()->add('min_price', 'Min price must be less than or equal to max price');
-            }
-        });
+        return [
+            'min_price.lte' => 'The :attribute field must be less than or equal to max price.',
+            'max_price.gte' => 'The :attribute field must be greater than or equal to min price.',
+        ];
     }
 }

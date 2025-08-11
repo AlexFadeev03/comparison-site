@@ -21,21 +21,25 @@
                         <span class="text-5xl mb-3">📦</span>
                         <div class="text-xl font-bold mb-1">Products</div>
                         <div class="text-3xl font-mono text-gray-700">{{ \App\Models\Product::count() }}</div>
+{{--                        TODO: Повиносити моделі з вьюх в репозиторії, отримувати дані в контролері з репозиторію і передавати во вьюху  --}}
                     </div>
                     <div class="bg-white rounded-2xl shadow p-8 flex flex-col items-center border-t-4 border-blue-300">
                         <span class="text-5xl mb-3">🗂️</span>
                         <div class="text-xl font-bold mb-1">Categories</div>
                         <div class="text-3xl font-mono text-gray-700">{{ \App\Models\Category::count() }}</div>
+{{--                        TODO: Повиносити моделі з вьюх в репозиторії, отримувати дані в контролері з репозиторію і передавати во вьюху  --}}
                     </div>
                     <div class="bg-white rounded-2xl shadow p-8 flex flex-col items-center border-t-4 border-yellow-300">
                         <span class="text-5xl mb-3">🧩</span>
                         <div class="text-xl font-bold mb-1">Subcategories</div>
                         <div class="text-3xl font-mono text-gray-700">{{ \App\Models\Subcategory::count() }}</div>
+{{--                        TODO: Повиносити моделі з вьюх в репозиторії, отримувати дані в контролері з репозиторію і передавати во вьюху  --}}
                     </div>
                     <div class="bg-white rounded-2xl shadow p-8 flex flex-col items-center border-t-4 border-green-300">
                         <span class="text-5xl mb-3"><svg xmlns='http://www.w3.org/2000/svg' class='inline h-8 w-8 text-blue-400' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5.121 17.804A13.937 13.937 0 0112 15c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0z' /></svg></span>
                         <div class="text-xl font-bold mb-1">Users</div>
                         <div class="text-3xl font-mono text-gray-700">{{ \App\Models\User::count() }}</div>
+{{--                        TODO: Повиносити моделі з вьюх в репозиторії, отримувати дані в контролері з репозиторію і передавати во вьюху  --}}
                     </div>
                 </div>
             </div>

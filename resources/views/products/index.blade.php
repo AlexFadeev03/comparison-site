@@ -141,6 +141,16 @@
                                         <circle cx="12" cy="12" r="2" stroke-width="1" stroke="currentColor" fill="none"/>
                                     </svg>
                                 </a>
+                                <a href="#"
+                                   class="compare-btn text-blue-600 hover:text-blue-800"
+                                   data-id="{{ $product->id }}"
+                                   title="Compare"
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 align-middle" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <ellipse cx="12" cy="12" rx="8" ry="5" stroke-width="1" stroke="currentColor" fill="none"/>
+                                        <circle cx="12" cy="12" r="2" stroke-width="1" stroke="currentColor" fill="none"/>
+                                    </svg>
+                                </a>
                                 @auth
                                     @if(auth()->user()->isAdmin())
                                         <a href="{{ route('products.edit', $product) }}" class="text-yellow-600 hover:text-yellow-800" title="Edit">
@@ -235,6 +245,7 @@
         // Event delegation for all .compare-btn clicks
         document.body.addEventListener('click', function(e) {
             if (e.target.closest('.compare-btn')) {
+                e.preventDefault();
                 const btn = e.target.closest('.compare-btn');
                 console.log('[COMPARE] Clicked:', btn.dataset.id); // DEBUG LOG
                 toggleCompare(Number(btn.dataset.id));
